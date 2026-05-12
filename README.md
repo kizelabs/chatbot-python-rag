@@ -85,7 +85,7 @@ streamlit run app.py
 
 ## Alur Penggunaan
 
-1. **Konfigurasi** — Klik tombol "Pengaturan", masukkan API key dan atur parameter model
+1. **Konfigurasi** — Klik tombol "Setelan", masukkan API key dan atur parameter model
 2. **Unggah** — Klik tombol "Unggah", pilih file materi belajar (PDF, DOCX, TXT, Gambar)
 3. **Chat** — Tanyakan apa saja tentang dokumenmu
 4. **Kuis** — Klik tombol "Kuis" untuk membuat soal latihan dari materi
@@ -95,13 +95,14 @@ streamlit run app.py
 
 | Komponen       | Teknologi                               |
 | ----------------| -----------------------------------------|
-| Frontend       | Streamlit                               |
+| Frontend       | Streamlit 1.41                          |
 | LLM            | Google Gemini 2.5 Flash Lite            |
 | Embeddings     | NVIDIA NIM (llama-nemotron-embed-1b-v2) |
-| Vector Store   | PGVector (PostgreSQL)                   |
-| Framework RAG  | LangChain                               |
+| Vector Store   | PGVectorStore (PostgreSQL + pgvector)   |
+| Framework RAG  | LangChain 0.3+                          |
 | Pencarian Web  | Exa API                                 |
 | Kontainerisasi | Docker Compose                          |
+| Database       | PostgreSQL 16 + pgvector                |
 
 ## Struktur Proyek
 
@@ -111,7 +112,7 @@ streamlit run app.py
 │   ├── chat.py                  # Chat UI + RAG pipeline
 │   ├── settings.py              # Dialog pengaturan
 │   ├── ingest.py                # Upload & pemrosesan dokumen
-│   ├── vectorstore.py           # PGVector + NVIDIA NIM embeddings
+│   ├── vectorstore.py           # PGVectorStore + NVIDIA NIM embeddings
 │   ├── web_search.py            # Pencarian web Exa (optional)
 │   ├── storage.py               # Persistensi localStorage
 │   └── tools/
@@ -130,3 +131,17 @@ streamlit run app.py
 | Chat & Generasi   | gemini-2.5-flash-lite             | Google     |
 | Embedding Dokumen | nvidia/llama-nemotron-embed-1b-v2 | NVIDIA NIM |
 | OCR Gambar        | gemini-2.5-flash-lite             | Google     |
+
+## Dependensi Utama
+
+| Package                      | Versi   |
+| ------------------------------| ---------|
+| langchain-google-genai       | 4.2.1   |
+| langchain-postgres           | 0.0.17  |
+| langchain-nvidia-ai-endpoints| ≥0.3.8  |
+| streamlit                    | 1.41.1  |
+| pgvector                     | 0.3.6   |
+
+## Lisensi
+
+MIT
