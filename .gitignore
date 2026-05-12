@@ -8,4 +8,6 @@ uploads/
 *.egg-info/
 dist/
 build/
+build.log
+build_output.txt
 .streamlit/secrets.toml
